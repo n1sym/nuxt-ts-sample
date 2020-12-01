@@ -6,15 +6,19 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
+
+interface User {
+  firstName: string
+  lastName: string
+}
+
 export default defineComponent({
   setup () {
-    const name = ref('This is a name')
-    const UserObj = ref({
-      firstName: 'hey',
+    const UserObj = ref<User>({
+      firstName: 'ai',
       lastName: 'ueo'
     })
     return {
-      name,
       UserObj
     }
   }
