@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div>Hello World</div>
-    <br>
-    <div>
-        Name: {{ fullName }}
-        Message: {{ message }}
-    </div>
+    Name: {{ fullName }}
+    Message: {{ message }}
   </div>
 </template>
 
