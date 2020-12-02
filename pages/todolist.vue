@@ -35,6 +35,7 @@ export default defineComponent({
 
     const addTodo = () => {
       todos.add(state.todo)
+      state.todo = ''
     }
     const removeTodo = (index: number) => {
       todos.remove(index)
