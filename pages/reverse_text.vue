@@ -7,9 +7,7 @@
       Reverse Message
     </button>
     <br><br>
-    <div class="text-purple-600 hover:text-purple-300">
-      <a href="https://hukurouo.web.app/articles/2020-12-01-nuxtts2">https://hukurouo.web.app/articles/2020-12-01-nuxtts2</a>
-    </div>
+    <Link url="https://hukurouo.web.app/articles/2020-12-01-nuxtts2" title="nuxt-ts day2：ESlint / 型チェックなど" />
   </div>
 </template>
 

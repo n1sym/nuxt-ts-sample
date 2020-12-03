@@ -3,7 +3,7 @@
     <p class="py-5">
       作ったもの置き場
       <br>
-      <a class="text-purple-600 hover:text-purple-300" href="https://github.com/hukurouo/nuxt-ts-sample">https://github.com/hukurouo/nuxt-ts-sample</a>
+      <Link url="https://github.com/hukurouo/nuxt-ts-sample" title="https://github.com/hukurouo/nuxt-ts-sample" />
     </p>
     <li v-for="item in items" :key="item.key" class="py-1">
       <nuxt-link :to="`/${item.link}`" class="hover:underline">
@@ -21,7 +21,7 @@ export default defineComponent({
     const items = [
       { link: 'reverse_text', title: 'テキスト反転' },
       { link: 'user', title: '基本的なcomponent' },
-      { link: 'todolist', title: 'TODOリスト' }
+      { link: 'todolist', title: 'TODOリスト(Vuex)' }
     ]
     return {
       items

@@ -14,6 +14,10 @@
         delete
       </button>
     </li>
+    <br><br>
+    <hr>
+    <br>
+    <Link url="https://hukurouo.web.app/articles/2020-12-02-nuxtts3" title="nuxt-ts day3：型安全なVuexでtodoリストを作る" />
   </div>
 </template>
 

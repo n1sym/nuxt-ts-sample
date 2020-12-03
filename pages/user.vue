@@ -3,9 +3,7 @@
     <h1>基本的なcomponent</h1>
     <User :user="UserObj" />
     <br>
-    <div class="text-purple-600 hover:text-purple-300">
-      <a href="https://hukurouo.web.app/articles/2020-11-30-nuxtts1">https://hukurouo.web.app/articles/2020-11-30-nuxtts1</a>
-    </div>
+    <Link url="https://hukurouo.web.app/articles/2020-11-30-nuxtts1" title="nuxt-ts day1：コンポーネントを作る" />
   </div>
 </template>
 
