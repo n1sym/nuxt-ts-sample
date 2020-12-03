@@ -1,4 +1,5 @@
-export default {
+import { NuxtConfig } from '@nuxt/types'
+const nuxtConfig: NuxtConfig = {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'nuxt-ts-tail-sample',
@@ -17,7 +18,9 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/composition-api'
+  plugins: [
+    '@/plugins/composition-api',
+    '@/plugins/axios-accessor'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -32,10 +35,14 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
+  modules: ['@nuxtjs/axios'
   ],
+  axios: {
+    // proxy: true
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
 }
+module.exports = nuxtConfig

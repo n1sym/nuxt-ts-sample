@@ -17,6 +17,7 @@
     <br><br>
     <hr>
     <br>
+
     <Link url="https://hukurouo.web.app/articles/2020-12-02-nuxtts3" title="nuxt-ts day3：型安全なVuexでtodoリストを作る" />
   </div>
 </template>
@@ -24,10 +25,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed } from '@vue/composition-api'
 import { TodoStore } from '~/store'
-
-interface Todo {
-  todo: string,
-}
+import { Todo } from '~/types/todo'
 
 export default defineComponent({
   setup () {

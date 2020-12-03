@@ -19,9 +19,10 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   setup () {
     const items = [
-      { link: 'reverse_text', title: 'テキスト反転' },
       { link: 'user', title: '基本的なcomponent' },
-      { link: 'todolist', title: 'TODOリスト(Vuex)' }
+      { link: 'reverse_text', title: 'テキスト反転' },
+      { link: 'todolist', title: 'TODOリスト (Vuex)' },
+      { link: 'axios', title: 'randomCat (axios)' }
     ]
     return {
       items

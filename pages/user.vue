@@ -9,11 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
-
-interface User {
-  firstName: string
-  lastName: string
-}
+import { User } from '~/types/user'
 
 export default defineComponent({
   setup () {
