@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-10">
     <p class="py-5">
       作ったもの置き場
       <br>
@@ -22,7 +22,8 @@ export default defineComponent({
       { link: 'user', title: '基本的なcomponent' },
       { link: 'reverse_text', title: 'テキスト反転' },
       { link: 'todolist', title: 'TODOリスト (Vuex)' },
-      { link: 'axios', title: 'randomCat (axios)' }
+      { link: 'axios', title: 'randomCat (axios)' },
+      { link: 'advent', title: 'アドベントカレンダー' }
     ]
     return {
       items

@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center items-center text-center max-w-md mx-auto">
+  <div class="justify-center items-center text-center max-w-md mx-auto p-10">
     <h1>Todoリスト</h1>
     <div class="flex">
       <input v-model="state.todo" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full leading-normal" placeholder="taskを入力してください">

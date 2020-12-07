@@ -1,5 +1,5 @@
 <template>
-  <div class="items-center text-center mx-auto">
+  <div class="items-center text-center mx-auto p-10">
     <h1>基本的なcomponent</h1>
     <User :user="UserObj" />
     <br>

@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="container min-h-screen justify-center max-w-lg mx-auto p-10">
+    <div class="container min-h-screen justify-center max-w-lg mx-auto">
       <Nuxt />
     </div>
   </div>

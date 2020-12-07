@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center items-center text-center mx-auto">
+  <div class="justify-center items-center text-center mx-auto p-10">
     <h1>テキスト反転</h1>
     Message: {{ message }}
     <br><br>

@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center items-center text-center mx-auto">
+  <div class="justify-center items-center text-center mx-auto p-10">
     <h1>randomCat (axios)</h1>
     <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" @click="changeCat">
       {{ state.loading }} 🐱
