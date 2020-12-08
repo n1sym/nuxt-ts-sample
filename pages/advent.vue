@@ -44,13 +44,14 @@ export default defineComponent({
       [13, 14, 15, 16, 17, 18, 19],
       [20, 21, 22, 23, 24, 25, 26]
     ]
+    // 色のロジック変更をJSONからやる アニメーションつけてもおもろいかも
     const isColor = (date: number): string => {
       if ([29, 26].includes(date)) { return 'invalid' }
       if ([30, 1, 2, 3, 4, 5, 6, 7, 8].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
     const asyncFunc = async (): Promise<void> => {
-      const JSON = await $axios.$get('https://gist.githubusercontent.com/hukurouo/58ff1826df34b20b791d0f3b49db449e/raw/8fb796916ab50483d6031a4e4b0863f3ce349f1f/content.json')
+      const JSON = await $axios.$get('https://gist.githubusercontent.com/hukurouo/58ff1826df34b20b791d0f3b49db449e/raw/c2ed76906e7448baee9555dbcb579ab8ad59f97b/content.json')
       state.obj = JSON.filter((i: { title: string|string[] }) => i.title.includes('nuxt-ts')).reverse()
     }
 
