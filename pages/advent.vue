@@ -1,39 +1,43 @@
 <template>
-  <div class="p-5">
+  <div class="pt-10">
     <div class="items-center text-center mx-auto">
-      <h1>Advent Calender 2020</h1>
-      <div v-for="week in calender" :key="week">
-        <div class="flex justify-center ...">
-          <div v-for="day in week" :key="day">
-            <div v-if="isColor(day) == `achieved`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-green-400 ...">
-              {{ day }}
-            </div>
-            <div v-if="isColor(day) == `invalid`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-gray-300 ...">
-              {{ day }}
-            </div>
-            <div v-if="isColor(day) == `unachieved`" class="box-border border-gray-200 h-8 w-8 p-0.5 border-2 m-1 ...">
-              {{ day }}
+      <div class="bg-gray-200 py-10 bg-opacity-75">
+        <h1>Advent Calender 2020 🎄</h1>
+        <div v-for="(week, index) in calender" :key="index">
+          <div class="flex justify-center ...">
+            <div v-for="day in week" :key="day">
+              <div v-if="isColor(day) == `achieved`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-green-400 ...">
+                {{ day }}
+              </div>
+              <div v-if="isColor(day) == `invalid`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-gray-300 ...">
+                {{ day }}
+              </div>
+              <div v-if="isColor(day) == `unachieved`" class="box-border border-gray-300 h-8 w-8 p-0.5 border-2 m-1 ...">
+                {{ day }}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <br>
-    <br>
-    <div>
-      <Link url="https://hukurouo.web.app/articles/2020-11-30-nuxtts1" title="nuxt-ts day1：コンポーネントを作る" />
-      <Link url="https://hukurouo.web.app/articles/2020-12-01-nuxtts2" title="nuxt-ts day2：ESlint / 型チェックなど" />
-      <Link url="https://hukurouo.web.app/articles/2020-12-02-nuxtts3" title="nuxt-ts day3：型安全なVuexでtodoリストを作る" />
-      <Link url="https://hukurouo.web.app/articles/2020-12-03-nuxtts4" title="nuxt-ts day4：axiosでランダム猫画像" />
+    <div class="p-5 ">
+      <div v-for="content in state.obj" :key="content.path">
+        <Link :url="`https://hukurouo.web.app${content.path}`" :title="content.title" />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { onMounted, defineComponent, reactive } from '@vue/composition-api'
+import { $axios } from '~/utils/api'
 
 export default defineComponent({
   setup () {
+    const state = reactive({
+      obj: {} as object
+    })
     const calender : number[][] = [
       [29, 30, 1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10, 11, 12],
@@ -41,12 +45,18 @@ export default defineComponent({
       [20, 21, 22, 23, 24, 25, 26]
     ]
     const isColor = (date: number): string => {
-      if (date === 29) { return 'invalid' }
-      if ([30, 1, 2, 3, 4, 5, 6, 7].includes(date)) { return 'achieved' }
+      if ([29, 26].includes(date)) { return 'invalid' }
+      if ([30, 1, 2, 3, 4, 5, 6, 7, 8].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
+    const asyncFunc = async (): Promise<void> => {
+      const JSON = await $axios.$get('https://gist.githubusercontent.com/hukurouo/58ff1826df34b20b791d0f3b49db449e/raw/8fb796916ab50483d6031a4e4b0863f3ce349f1f/content.json')
+      state.obj = JSON.filter((i: { title: string|string[] }) => i.title.includes('nuxt-ts')).reverse()
+    }
+
+    onMounted(() => { asyncFunc() })
     return {
-      calender, isColor
+      calender, isColor, state
     }
   }
 })
