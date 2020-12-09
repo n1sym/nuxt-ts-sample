@@ -38,6 +38,7 @@ import { Content } from '~/types/content'
 export default defineComponent({
   setup () {
     const contents: Content[] = [
+      { title: 'nuxt-ts day10：アドベントカレンダー製作3', path: '/articles/2020-12-09-nuxtts10' },
       { title: 'nuxt-ts day9：アドベントカレンダー製作2', path: '/articles/2020-12-08-nuxtts9' },
       { title: 'nuxt-ts day8：アドベントカレンダー製作', path: '/articles/2020-12-07-nuxtts8' },
       { title: 'nuxt-ts day7：TypeScript Deep Dive を読む 3', path: '/articles/2020-12-06-nuxtts7' },
