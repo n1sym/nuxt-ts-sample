@@ -7,7 +7,7 @@
           <div class="flex justify-center ...">
             <div v-for="day in week" :key="day">
               <div v-if="isColor(day) == `achieved`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-green-400 ...">
-                {{ day }}
+                <a :href="genLink(day)" target="_blank" rel="noopener noreferrer">{{ day }}</a>
               </div>
               <div v-if="isColor(day) == `invalid`" class="box-border h-8 w-8 p-0.5 border-2 m-1 bg-gray-300 ...">
                 {{ day }}
@@ -18,26 +18,36 @@
             </div>
           </div>
         </div>
+        <br>
+        {{ contents.length }}日連続更新中
       </div>
     </div>
     <br>
     <div class="p-5 ">
-      <div v-for="content in state.obj" :key="content.path">
-        <Link :url="`https://hukurouo.web.app${content.path}`" :title="content.title" />
+      <div v-for="content in contents" :key="content.path">
+        <Link :url="`https://hukurouo.com${content.path}`" :title="content.title" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted, defineComponent, reactive } from '@vue/composition-api'
-import { $axios } from '~/utils/api'
+import { defineComponent } from '@vue/composition-api'
+import { Content } from '~/types/content'
 
 export default defineComponent({
   setup () {
-    const state = reactive({
-      obj: {} as object
-    })
+    const contents: Content[] = [
+      { title: 'nuxt-ts day9：アドベントカレンダー製作2', path: '/articles/2020-12-08-nuxtts9' },
+      { title: 'nuxt-ts day8：アドベントカレンダー製作', path: '/articles/2020-12-07-nuxtts8' },
+      { title: 'nuxt-ts day7：TypeScript Deep Dive を読む 3', path: '/articles/2020-12-06-nuxtts7' },
+      { title: 'nuxt-ts day6：TypeScript Deep Dive を読む 2', path: '/articles/2020-12-05-nuxtts6' },
+      { title: 'nuxt-ts day5：TypeScript Deep Dive を読む', path: '/articles/2020-12-04-nuxtts5' },
+      { title: 'nuxt-ts day4：axiosでランダム猫画像', path: '/articles/2020-12-03-nuxtts4' },
+      { title: 'nuxt-ts day3：型安全なVuexでtodoリストを作る', path: '/articles/2020-12-02-nuxtts3' },
+      { title: 'nuxt-ts day2：ESlint / 型チェックなど', path: '/articles/2020-12-01-nuxtts2' },
+      { title: 'nuxt-ts day1：コンポーネントを作る', path: '/articles/2020-11-30-nuxtts1' }
+    ].reverse()
     const calender : number[][] = [
       [29, 30, 1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10, 11, 12],
@@ -50,14 +60,14 @@ export default defineComponent({
       if ([30, 1, 2, 3, 4, 5, 6, 7, 8].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
-    const asyncFunc = async (): Promise<void> => {
-      const JSON = await $axios.$get('https://gist.githubusercontent.com/hukurouo/58ff1826df34b20b791d0f3b49db449e/raw/c2ed76906e7448baee9555dbcb579ab8ad59f97b/content.json')
-      state.obj = JSON.filter((i: { title: string|string[] }) => i.title.includes('nuxt-ts')).reverse()
+    const genLink = (date: number): string => {
+      if (date === 30) { return 'https://hukurouo.com/articles/2020-11-30-nuxtts1' }
+      const url = 'https://hukurouo.com' + contents[date].path
+      return url
     }
 
-    onMounted(() => { asyncFunc() })
     return {
-      calender, isColor, state
+      calender, isColor, contents, genLink
     }
   }
 })
