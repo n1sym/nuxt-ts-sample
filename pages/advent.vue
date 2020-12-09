@@ -58,7 +58,7 @@ export default defineComponent({
     // 色のロジック変更をJSONからやる アニメーションつけてもおもろいかも
     const isColor = (date: number): string => {
       if ([29, 26].includes(date)) { return 'invalid' }
-      if ([30, 1, 2, 3, 4, 5, 6, 7, 8].includes(date)) { return 'achieved' }
+      if ([30, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
     const genLink = (date: number): string => {
