@@ -1,5 +1,4 @@
-import { NuxtConfig } from '@nuxt/types'
-const nuxtConfig: NuxtConfig = {
+const nuxtConfig = {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'nuxt-ts-tail-sample',
