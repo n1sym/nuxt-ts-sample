@@ -5,7 +5,7 @@
       <br>
       <Link url="https://github.com/hukurouo/nuxt-ts-sample" title="https://github.com/hukurouo/nuxt-ts-sample" />
     </p>
-    <li v-for="item in items" :key="item.key" class="py-1">
+    <li v-for="item in items" :key="item.key" class="py-1 text-gray-800">
       <nuxt-link :to="`/${item.link}`" class="hover:underline">
         {{ item.title }}
       </nuxt-link>
@@ -23,7 +23,8 @@ export default defineComponent({
       { link: 'reverse_text', title: 'テキスト反転' },
       { link: 'todolist', title: 'TODOリスト (Vuex)' },
       { link: 'axios', title: 'randomCat (axios)' },
-      { link: 'advent', title: 'アドベントカレンダー' }
+      { link: 'advent', title: 'アドベントカレンダー' },
+      { link: 'uploader', title: '画像アプロダ' }
     ]
     return {
       items
