@@ -25,7 +25,7 @@ export default defineComponent({
   setup () {
     const state = reactive<Auth>({
       displayName: '',
-      loginStatus: true
+      loginStatus: false
     })
 
     const signIn = async (): Promise<void> => {
