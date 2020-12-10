@@ -17,7 +17,7 @@ const nuxtConfig: NuxtConfig = {
   css: [
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    API_KEY: process.env.API_KEY
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
