@@ -11,7 +11,7 @@
         SignOut
       </button>
       <br><br>
-      {{ state.displayName }} でログインしています
+      {{ state.displayName }} でログインしています {{ state.authStatus }}
     </div>
   </div>
 </template>
@@ -21,11 +21,15 @@ import firebase from '@/plugins/firebase'
 import { defineComponent, reactive, onMounted } from '@vue/composition-api'
 import { Auth } from '~/types/auth'
 
+const db = firebase.firestore()
+const docRef = db.collection('datas').doc('dDcpHNalFtXE6VOrBip6')
+
 export default defineComponent({
   setup () {
     const state = reactive<Auth>({
       displayName: '',
-      loginStatus: false
+      loginStatus: false,
+      authStatus: false
     })
 
     const signIn = async (): Promise<void> => {
@@ -42,17 +46,31 @@ export default defineComponent({
         state.displayName = ''
         state.loginStatus = false
       }).catch(function (error) {
-        // An error happened.
+        // eslint-disable-next-line no-console
         console.log(error)
+        // An error happened.
       })
     }
 
-    onMounted(() => {
-      firebase.auth().onAuthStateChanged((user) => {
+    onMounted(async (): Promise<void> => {
+      await firebase.auth().onAuthStateChanged(async (user) => {
+        let email: string | undefined = ''
+        await docRef.get().then(function (doc) {
+          if (doc.exists) {
+            email = doc.data()!.email
+          } else {
+          // doc.data() will be undefined in this case
+            console.log('No such document!')
+          }
+        }).catch(function (error) {
+          console.log('Error getting document:', error)
+        })
         if (user) {
-          console.log(user)
           state.displayName = user.displayName
           state.loginStatus = true
+          if (email === user.email) {
+            state.authStatus = true
+          }
         } else {
           state.displayName = ''
           state.loginStatus = false
