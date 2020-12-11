@@ -38,6 +38,7 @@ import { Content } from '~/types/content'
 export default defineComponent({
   setup () {
     const contents: Content[] = [
+      { title: 'nuxt-ts day12：画像アップローダーを作ろう 2', path: '/articles/2020-12-11-nuxtts12' },
       { title: 'nuxt-ts day11：画像アップローダーを作ろう', path: '/articles/2020-12-10-nuxtts11' },
       { title: 'nuxt-ts day10：アドベントカレンダー製作3', path: '/articles/2020-12-09-nuxtts10' },
       { title: 'nuxt-ts day9：アドベントカレンダー製作2', path: '/articles/2020-12-08-nuxtts9' },
@@ -59,7 +60,7 @@ export default defineComponent({
     // 色のロジック変更をJSONからやる アニメーションつけてもおもろいかも
     const isColor = (date: number): string => {
       if ([29, 26].includes(date)) { return 'invalid' }
-      if ([30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(date)) { return 'achieved' }
+      if ([30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
     const genLink = (date: number): string => {
