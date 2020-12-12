@@ -39,8 +39,8 @@
       <br>
       <div class="flex flex-wrap justify-center ...">
         <div v-for="item in info.imagelist" :key="item.key" class="py-1 text-gray-800 break-all">
-          <button class="hover:bg-blue-700 text-white font-bold py-1 px-1 rounded" @click="copySomething(item.image_url)">
-            <img :src="item.image_url" alt="" class="w-24">
+          <button class="hover:bg-blue-700 text-white font-bold py-1 px-1 rounded" @click="copySomething(item)">
+            <img :src="item" alt="" class="w-24">
           </button>
         </div>
       </div>
@@ -80,8 +80,8 @@ export default defineComponent({
     })
 
     const info = reactive({
-      message: '',
-      imagelist: [] as any[]
+      message: '' as string,
+      imagelist: [] as string[]
     })
 
     const signIn = async (): Promise<void> => {
@@ -95,7 +95,7 @@ export default defineComponent({
       }
     }
 
-    const signOut = () => {
+    const signOut = (): void => {
       firebase.auth().signOut().then(function () {
         state.displayName = ''
         state.loginStatus = false
@@ -105,7 +105,7 @@ export default defineComponent({
       })
     }
 
-    const isAuth = (email: string | null) => {
+    const isAuth = (email: string | null): void => {
       docRef.get().then(function (doc) {
         if (doc.exists) {
           if (email === doc.data()!.email) {
@@ -120,7 +120,8 @@ export default defineComponent({
         console.log('Error getting document:', error)
       })
     }
-    const uplaodFile = (event: any) => {
+
+    const uplaodFile = (event: any): void => {
       info.message = ''
       const file = event.target.files[0]
       if (!file) { return }
@@ -149,19 +150,14 @@ export default defineComponent({
       setTimeout(function () { info.message = '' }, 5000)
     }
 
-    const listImageFile = () => {
+    const listImageFile = (): void => {
       db.collection('images')
         .orderBy('time', 'desc').limit(12)
         .get()
         .then((querySnapshot) => {
           info.imagelist = []
           querySnapshot.forEach((doc) => {
-            info.imagelist.push({
-              name: doc.data().name,
-              image_url: doc.data().image_url,
-              size: doc.data().size,
-              time: doc.data().time
-            })
+            info.imagelist.push(doc.data().image_url)
           })
         })
         .catch(function (error) {
@@ -169,7 +165,7 @@ export default defineComponent({
         })
     }
 
-    const copySomething = (text: string) => {
+    const copySomething = (text: string): void => {
       navigator.clipboard.writeText('![](' + (text) + ')').catch((e) => {
         console.error(e)
       })
