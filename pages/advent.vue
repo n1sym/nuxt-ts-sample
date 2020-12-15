@@ -38,6 +38,7 @@ import { Content } from '~/types/content'
 export default defineComponent({
   setup () {
     const contents: Content[] = [
+      { title: 'react day16：React入門2', path: '/articles/2020-12-15-react16' },
       { title: 'react day15：React入門', path: '/articles/2020-12-14-react15' },
       { title: 'nuxt-ts day14：zennに記事書いた　そしてReactへ', path: '/articles/2020-12-13-nuxtts14' },
       { title: 'nuxt-ts day13：画像アップローダーを作ろう 3', path: '/articles/2020-12-12-nuxtts13' },
