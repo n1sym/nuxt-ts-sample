@@ -38,6 +38,7 @@ import { Content } from '~/types/content'
 export default defineComponent({
   setup () {
     const contents: Content[] = [
+      { title: 'react day20：React入門6', path: '/articles/2020-12-19-react20' },
       { title: 'react day19：React入門5 三目並べ完成', path: '/articles/2020-12-18-react19' },
       { title: 'react day18：React入門4', path: '/articles/2020-12-17-react18' },
       { title: 'react day17：React入門3', path: '/articles/2020-12-16-react17' },
@@ -67,7 +68,7 @@ export default defineComponent({
     // 色のロジック変更をJSONからやる アニメーションつけてもおもろいかも
     const isColor = (date: number): string => {
       if ([29, 26].includes(date)) { return 'invalid' }
-      if ([30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].includes(date)) { return 'achieved' }
+      if ([30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].includes(date)) { return 'achieved' }
       return 'unachieved'
     }
     const genLink = (date: number): string => {
