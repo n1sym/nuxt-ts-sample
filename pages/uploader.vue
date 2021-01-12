@@ -138,6 +138,12 @@ export default defineComponent({
             .then(function (docRef) {
               info.message = 'アップロードが完了しました'
               listImageFile()
+              const fileRef = firebase.storage().ref().child(`images/${file.name}`)
+              const metadata = {
+                contentType: 'image/png',
+                cacheControl: 'public,max-age=604800'
+              }
+              fileRef.updateMetadata(metadata)
               console.log('Document written with ID: ', docRef.id)
             })
             .catch(function (error) {
