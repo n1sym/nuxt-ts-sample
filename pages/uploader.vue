@@ -172,7 +172,7 @@ export default defineComponent({
     }
 
     const copySomething = (text: string): void => {
-      navigator.clipboard.writeText('<figure><img src="' + (text) + '"><figcaption></figcaption></figure>').catch((e) => {
+      navigator.clipboard.writeText(text).catch((e) => {
         console.error(e)
       })
     }
